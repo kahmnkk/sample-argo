@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: parent
+spec:
+  sources:
+    - path: parent/
+      repoURL: https://github.com/kahmnkk/sample-argo.git
+      targetRevision: main
+      helm:
+        releaseName: parent-app
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - RespectIgnoreDifferences=true
+  ignoreDifferences:
+    - group: '*'
+      jqPathExpressions:
+        - .spec.destination
+        - .spec.sources[0].helm.parameters
+      kind: Application
