@@ -19,7 +19,7 @@ spec:
       - CreateNamespace=true
       - RespectIgnoreDifferences=true
   ignoreDifferences:
-    - group: "argoproj.io/v1alpha1"
+    - group: "*"
       jqPathExpressions:
         - .spec.sources[0].helm.parameters
       kind: Application

@@ -20,8 +20,3 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
-  ignoreDifferences:
-    - group: "*"
-      jqPathExpressions:
-        - .spec.template.spec.containers[0].ports
-      kind: Deployment
