@@ -2,11 +2,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: parent
-  namespace: argo
+  namespace: argocd
 spec:
   project: default
   destination:
-    namespace: argo
+    namespace: argocd
     server: https://kubernetes.default.svc
   sources:
     - path: parent/
@@ -19,7 +19,7 @@ spec:
       - CreateNamespace=true
       - RespectIgnoreDifferences=true
   ignoreDifferences:
-    - group: '*'
+    - group: "*"
       jqPathExpressions:
         - .spec.destination
         - .spec.sources[0].helm.parameters

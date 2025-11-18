@@ -2,11 +2,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: child
-  namespace: argo
+  namespace: argocd
 spec:
   project: default
   destination:
-    namespace: argo
+    namespace: argocd
     server: https://kubernetes.default.svc
   sources:
     - path: child/
